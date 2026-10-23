@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evaluador técnico de equipos biomédicos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Evaluador técnico de equipos biomédicos</h1>
+    <p>Evaluación técnica comparativa de ofertas de equipos biomédicos.</p>
+  </header>
+
+  <main>
+    <section class="carga">
+      <div>
+        <label for="archivo-csv">Nueva evaluación: archivo de criterios (.csv)</label>
+        <input type="file" id="archivo-csv" accept=".csv,text/csv">
+        <p class="ayuda">
+          Columnas: <code>item, equipo, requisito, peso</code>.
+          Guárdalo como "CSV UTF-8" para que las tildes se vean bien.
+        </p>
+      </div>
+      <div>
+        <label for="archivo-xlsx">Continuar una evaluación: Excel exportado (.xlsx)</label>
+        <input type="file" id="archivo-xlsx" accept=".xlsx">
+        <p class="ayuda">
+          Carga el Excel que exportaste desde esta página, con todo lo que habías evaluado.
+        </p>
+      </div>
+    </section>
+
+    <section class="general">
+      <h2>Datos generales del informe</h2>
+      <div class="campos">
+        <label>Proyecto o entidad <input type="text" id="dg-proyecto"></label>
+        <label>Proceso o referencia <input type="text" id="dg-proceso"></label>
+        <label>Elaborado por <input type="text" id="dg-elaborado"></label>
+        <label>Fecha <input type="date" id="dg-fecha"></label>
+      </div>
+    </section>
+
+    <div id="recuperar" hidden>
+      <p id="recuperar-texto"></p>
+      <div class="botones">
+        <button id="recuperar-si" type="button">Recuperar</button>
+        <button id="recuperar-no" type="button" class="secundario">Descartar</button>
+      </div>
+    </div>
+
+    <div id="mensajes" role="alert"></div>
+    <div class="barra">
+      <p id="resumen"></p>
+      <span id="guardado" aria-live="polite"></span>
+      <div class="botones">
+        <button id="exportar" type="button" disabled>Exportar a Excel</button>
+        <button id="exportar-word" type="button" disabled>Exportar informe (Word)</button>
+      </div>
+    </div>
+    <div id="criterios"></div>
+  </main>
+
+  <script src="exceljs.min.js"></script>
+  <script src="docx.iife.js"></script>
+  <script src="csv.js"></script>
+  <script src="calculo.js"></script>
+  <script src="comparativo.js"></script>
+  <script src="exportar.js"></script>
+  <script src="resumen.js"></script>
+  <script src="informe.js"></script>
+  <script src="importar.js"></script>
+  <script src="autoguardado.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
